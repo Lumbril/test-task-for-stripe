@@ -1,3 +1,13 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
-# Create your models here.
+
+class Item(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Названние')
+    description = models.TextField(verbose_name='Описание')
+    price = models.FloatField(validators=[MinValueValidator(0)], verbose_name='Цена')
+
+    class Meta:
+        db_table = 'items'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
