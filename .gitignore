@@ -115,3 +115,5 @@ data/
 
 # Pyre type checker
 .pyre/
+
+/persistentdata
