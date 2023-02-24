@@ -15,4 +15,5 @@ RUN pip3 install -r requirements.txt
 COPY . ./src
 
 CMD python3 src/manage.py migrate \
-    && gunicorn --chdir ./src core.wsgi:application --bind 0.0.0.0:8000
+    && python3 src/manage.py createsuperuser --noinput \
+    & gunicorn --chdir ./src core.wsgi:application --bind 0.0.0.0:8000
