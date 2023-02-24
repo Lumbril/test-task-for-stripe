@@ -37,6 +37,10 @@ python manage.py migrate
 8. Запустить сервер
 ```
 python manage.py runserver
+```  
+9. Открыть страницу
+```
+localhost:8000
 ```
 
 ***
@@ -48,12 +52,16 @@ python manage.py runserver
 git clone git@github.com:Lumbril/test-task-for-stripe.git
 ```
 2. Перейти в директорию проекта
-3. Файл .envEx переименовать в .env и изменить данные в нем на подходящие вам (Переменная LEVEL имеет два значения: PROD и LOCAL (default=LOCAL)) 
+3. Файл .envEx переименовать в .env и изменить данные в нем на подходящие вам (Переменная LEVEL имеет два значения (здесь надо поставить PROD): PROD и LOCAL (default=LOCAL)) 
 4. Запустить контейнеры 
 ``` 
 docker-compose up -d
- ```
-5. Остановка работы контейнеров 
+```  
+5. Открыть страницу
+```
+localhost:8000
+```
+6. Остановка работы контейнеров 
 ```
 docker-compose stop
 ```
