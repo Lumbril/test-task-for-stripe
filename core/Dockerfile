@@ -1,10 +1,17 @@
-FROM python:3.8
+FROM python:3-alpine
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV DJANGO_ENV master
-ENV DOCKER_CONTAINER 1
 
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install -r /code/requirements.txt
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev
 
-COPY . /code/
-WORKDIR /code/
+RUN pip3 install --upgrade pip
+COPY ./requirements.txt .
+RUN pip3 install -r requirements.txt
+
+COPY . ./src
+
+CMD gunicorn --chdir ./src Awooo.wsgi:application --bind 0.0.0.0:8000
